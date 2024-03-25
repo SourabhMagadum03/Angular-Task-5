@@ -1,0 +1,105 @@
+<div class="container my-5">
+  <div class="row m-0">
+    <div class="col-sm-6 offset-sm-3">
+       <div class=" mb-4 wrapper form-wrapper">
+
+<form [formGroup]="myReactiveForm" (submit)="onSubmit()">
+  <div class=" form-group pl-2 row">
+    <div class="form-check col-md-2" > 
+    <input class="form-check-input" formControlName="hodSatff" type="radio" value="Hod" >
+    <label class="form-check-label" for="gridRadios1Hod">
+      HOD
+    </label>
+  </div>
+  <div class="form-check col-md-2 ml-1" > 
+    <!-- *ngFor="let std of studentArr" -->
+  <input class="form-check-input" type="radio" formControlName="hodSatff"  value="staff" >
+  <label class="form-check-label" for="gridRadios1staff">
+    Staff
+    <!-- (change)="OnChane($event)" -->
+    <!-- {{std}} -->
+  </label>
+ 
+</div>
+<span class="small text-danger" *ngIf="(myReactiveForm.get('hodSatff').touched && !myReactiveForm.get('hodSatff').valid) || (submitted && !myReactiveForm.get('hodSatff').valid)">Roll is Required !</span>
+  </div>
+ 
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label for="firstNameUs">First Nmae</label>
+      <input type="text" id="firstNameUs"  formControlName="firstName" class="form-control form-control-sm" >
+      <span class="small text-danger" *ngIf="(myReactiveForm.get('firstName').touched && !myReactiveForm.get('firstName').valid) || (submitted && !myReactiveForm.get('firstName').valid)">Frist Name is Required !</span>
+   </div>
+   <div class="form-group col-md-6">
+     <label for="lastNameUs">Last Nmae</label>
+     <input type="text" id="lastNameUs" formControlName="lastName" class="form-control form-control-sm" >
+     <span class="small text-danger" *ngIf="(myReactiveForm.get('lastName').touched && !myReactiveForm.get('lastName').valid) || (submitted && !myReactiveForm.get('lastName').valid)">Last Name is Required !</span>
+  </div>
+  </div>
+   <div class="row">
+    <div class="form-group col-md-6">
+      <label for="emailId">Email</label>
+      <input type="text" id="emailId" formControlName="emailId" class="form-control form-control-sm" >
+      <span class="small text-danger" *ngIf="myReactiveForm.get('emailId').touched && !myReactiveForm.get('emailId').valid ">
+        <ng-container *ngIf="myReactiveForm.get('emailId').errors?.required">Email Id is required!</ng-container>
+        <ng-container *ngIf="myReactiveForm.get('emailId').errors?.email">Email Id is not proper!</ng-container>
+        <!-- <ng-container *ngIf="myReactiveForm.get('userEmail').errors?.uniqueEmail">Provided Email Id is already being used by someone else!</ng-container> -->
+     </span>
+   </div>
+   <div class="form-group col-md-6">
+       <label for="contactNumberUs">Contact</label>
+       <input type="text" id="contactNumberUs" formControlName="contactNumber" class="form-control form-control-sm" >
+       <span class="small text-danger" *ngIf="(myReactiveForm.get('contactNumber').touched && !myReactiveForm.get('contactNumber').valid) || (submitted && !myReactiveForm.get('contactNumber').valid)">
+        <ng-container *ngIf="myReactiveForm.get('contactNumber').errors?.required" >Contact Number is Required!</ng-container>
+        <ng-container *ngIf="myReactiveForm.get('contactNumber').errors?.minlength">the length of the contact should be {{myReactiveForm.get('contactNumber').errors?.minlength?.requiredLength}} digits! Please put {{myReactiveForm.get('contactNumber').errors?.minlength?.requiredLength - myReactiveForm.get('contactNumber').errors?.minlength?.actualLength}} more number{{(myReactiveForm.get('contactNumber').errors?.minlength?.requiredLength - myReactiveForm.get('contactNumber').errors?.minlength?.actualLength ) !== 1 ? 's' : ''}} to validate.</ng-container>
+
+      </span>
+   </div>
+   </div>
+   <div class="row">
+    <div class="form-group col-md-6">
+      <label for="emailIdUs" >Department</label>
+      <select class="w-100 h-50" formControlName="department">
+        <option value="">Choose option</option>
+        <option *ngFor="let dep of departmentArr" [ngValue]="dep" >{{dep}}</option>
+    </select>
+    <span class="small text-danger" *ngIf="(myReactiveForm.get('department').touched && !myReactiveForm.get('department').valid) || (submitted && !myReactiveForm.get('department').valid)">Department is Required !</span>
+   </div>
+   </div>
+   <div class="row">
+    <div class="form-group col-md-6">
+      <label for="userName">User Name</label>
+      <input type="text" id="userName" formControlName="userName" class="form-control form-control-sm" >
+      <span class="small text-danger" *ngIf="(myReactiveForm.get('userName').touched && !myReactiveForm.get('userName').valid) || (submitted && !myReactiveForm.get('userName').valid)">User Name is Required !</span>
+   </div>
+   <div class="form-group col-md-6">
+       <label for="contactNumber">Password</label>
+       <input type="password" id="contactNumber" formControlName="userPassword" class="form-control form-control-sm" >
+       <span class="small text-danger" *ngIf="(myReactiveForm.get('userPassword').touched && !myReactiveForm.get('userPassword').valid) || (submitted && !myReactiveForm.get('userPassword').valid)">Password is Required !</span>
+       
+   </div>
+   </div>
+  
+
+<div class="mx-3">
+  <button class="btn btn-sm btn-primary btn-block" [disabled]="!myReactiveForm.valid" type="submit">submit</button>
+  <hr>
+  <hr> 
+<ng-container >
+   <p>Already Registered?  <a routerLink="/login"> Login</a></p>
+</ng-container>
+</div>
+</form>
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+

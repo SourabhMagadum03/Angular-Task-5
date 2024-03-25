@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <ng-container *ngIf="allLeaveDataArr.length; else elseNoLeveAp">
+  <div class="row mb-3">
+    <!-- <div class="col-sm-3">
+      <span>{{allLeaveDay}}</span>
+      <span  class="mx-5">{{ApproveDay}}</span>
+      <span>{{RejectDay}}</span> -->
+         
+      <div class="col-md-2 col-4 p-md-0 pl-md-5 ml-md-2 font-weight-bold d-block"><h1 class="ml-4 mb-0 font-weight-bold">{{allLeaveDay}}</h1>
+      <span>Total Leaves</span></div>
+      <div class="col-md-1  col-3 p-0 font-weight-bold d-block"><h1 class="ml-4 mb-0 font-weight-bold">{{ApproveDay}}</h1>
+        <span>Approved</span></div>
+        <div class="col-md-1  col-3 font-weight-bold d-block"><h1 class="ml-4 mb-0 font-weight-bold">{{RejectDay}}</h1>
+          <span>Rejected</span></div>
+    
+        
+    <!-- </div> -->
+   
+    <div class="col-sm-6 col-12 pl-md-5 mt-2">
+      <button class="btn btn-primary" mat-button (click)="openDialog()"> + Apply Leave</button>
+  </div>
+  </div>
+    <div class="row">
+      
+       
+          <div class="card my-2 text-left col-11 col-sm-4 col-md-3 ml-3" *ngFor="let allleve of allLeaveDataArr" style="width: 30rem;">
+              <div class="card-body">
+                <h5 class="card-title">Leave for : {{allleve.LeaveStart | date:'mediumDate'}}  To  {{allleve.LeaveEnd | date:'mediumDate'}}
+                  <br>
+                  Number of Days : {{allleve.Days}}
+                </h5>
+                
+                <p class="card-text"><span class="font-weight-bold d-block">Reason :</span>
+                   {{allleve.Reason}}
+                 <br> <br>
+               
+                 <span class="font-weight-bold d-block">Status :</span> {{allleve.Status}}
+                </p>
+                <!-- <h4 class="card-title">Status : <span>{{allleve.Status}}</span> </h4> -->
+             
+              </div>
+            </div>
+      
+       
+</div>
+</ng-container>
+<ng-template #elseNoLeveAp >
+  
+  <h1 class="my-loader col-12 text-center " style="margin-top:280px;">Not applied any leave yet</h1>
+  <h1 class="my-loader col-12 text-center mt-2" > <button class="btn btn-primary" mat-button (click)="openDialog()"> + Apply Leave</button></h1>
+</ng-template>
+</div>

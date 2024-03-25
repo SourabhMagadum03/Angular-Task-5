@@ -1,0 +1,38 @@
+
+
+<mat-dialog-content>
+  <form #myForm="ngForm" (submit)="createProduct(myForm)">
+    <div class="form-group mb-2">
+       <mat-form-field appearance="outline">
+         
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input  [rangePicker]="newpicker">
+            <input matStartDate ngModel #startDate="ngModel" placeholder="Start date" name="startDate">
+            <input matEndDate  ngModel #endDate="ngModel" placeholder="End date" name="endDate">
+          </mat-date-range-input>
+          <mat-hint>From MM/DD/YYYY -To MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="newpicker"></mat-datepicker-toggle>
+          <mat-date-range-picker #newpicker></mat-date-range-picker>
+       </mat-form-field>
+         <!-- <span class="small text-danger" *ngIf="(myProductForm.get('productImg').touched && !myProductForm.get('productImg').valid) || (submitted && !myProductForm.get('productImg').valid)">Image is Required !</span> -->
+   </div>
+   <div class="form-group mb-2">
+     
+    <label for="" class="d-block font-weight-bold d-block">Reason</label>
+       <mat-form-field appearance="outline">
+           <!-- <mat-label>Product Name</mat-label> -->
+           
+           <textarea matInput  ngModel #Reason="ngModel"  class="form-control"   placeholder="Reason" name="Reason"></textarea>
+       </mat-form-field>
+           <!-- <span class="small text-danger" *ngIf="(myProductForm.get('productNam').touched && !myProductForm.get('productNam').valid) || (submitted && !myProductForm.get('productNam').valid)">Product Name is Required !</span> -->
+   </div>
+  
+    <div class="form-group  mb-2">
+      <button class="btn btn-primary btn-sm w-35" [disabled]="!myForm.valid" mat-dialog-close type="submit">Submit</button>
+      <button class="btn btn-danger btn-sm w-35 ml-2" mat-dialog-close type="button">Cancel</button>
+      <!-- <h2>from : {{ myLeaveForm.value.endDate  - myLeaveForm.value.startDate }} - to {{myLeaveForm.value.endDate | date:'short'}}</h2> -->
+     </div>
+  </form>
+ </mat-dialog-content>
+ 
+ 

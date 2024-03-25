@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row mt-5 ">
+      <div class="col-sm-6 offset-sm-3">
+         <div class=" mb-4 wrapper form-wrapper">
+  
+  <form [formGroup]="myStdForm" (submit)="onSubmit()">
+
+     <div class="row">
+      <div class="form-group col-md-6">
+        <label for="emailId">User Name</label>
+        <input type="text" id="emailId" class="form-control form-control-sm" formControlName="userName">
+     </div>
+     <div class="form-group col-md-6">
+         <label for="contactNumber">Password</label>
+         <input type="password" id="contactNumber" class="form-control form-control-sm" formControlName="userPass">
+     </div>
+     </div>
+    <div class="mx-3">
+        <button class="btn btn-sm btn-primary btn-block" type="submit">submit</button>
+        <hr>
+     <ng-container >
+         <p>Not Registered Yet? <a routerLink="/Registration"> Register</a></p>
+     </ng-container>
+    </div>
+    
+  
+  </form>
+  
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  
+  

@@ -1,0 +1,81 @@
+<div class="container mt-3">
+  <ng-container *ngIf="allLeaveDataArr.length; else elseNoLeveRe">
+    <div class="row">
+      <div class="card my-2 text-left col-11 col-sm-4 col-md-3 ml-3" *ngFor="let allleve of pendingLeav" style="width: 30rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Name : {{allleve.UserFullName}}
+                  <br>
+                  Leave for :  {{allleve.LeaveStart | date:'mediumDate'}}   -To  {{allleve.LeaveEnd | date:'mediumDate'}}
+                  <br>
+                  Number of Days : {{allleve.Days}}
+                  </h5>
+                  <p class="card-text"><span class="font-weight-bold d-block">Reason :</span>  {{allleve.Reason}}</p>
+                  <div *ngIf="allleve.Status === 'Pedding'">
+                    <button class="btn btn-success" (click)="OnApprove(allleve.id)">Approve</button>
+                    <button class="btn btn-danger ml-3" (click)="OnReject(allleve.id)"> Reject </button>
+                  </div>
+                  <div class="" *ngIf=" allleve.Status ==='Approved'" style="color: green;">
+                    <mat-icon class="pt-1">done</mat-icon><span> Approved</span>  
+                  </div>
+                 <div  *ngIf="allleve.Status === 'Rejected'"  style="color: red;">
+                  <mat-icon  class="pt-1">clear</mat-icon><span> Rejected</span>
+                 </div>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+
+              <div class="card my-2 text-left col-11 col-sm-4 col-md-3 ml-3" *ngFor="let allleve of otherLeave" style="width: 30rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Name : {{allleve.UserFullName}}
+                  <br>
+                  Leave for :  {{allleve.LeaveStart | date:'mediumDate'}}   -To  {{allleve.LeaveEnd | date:'mediumDate'}}
+                  <br>
+                  Number of Days : {{allleve.Days}}
+                  </h5>
+                  <p class="card-text"><span class="font-weight-bold d-block">Reason :</span>  {{allleve.Reason}}</p>
+                  <div *ngIf="allleve.Status === 'Pedding'">
+                    <button class="btn btn-success" (click)="OnApprove(allleve.id)">Approve</button>
+                    <button class="btn btn-danger ml-3" (click)="OnReject(allleve.id)"> Reject </button>
+                  </div>
+                  <div class="" *ngIf=" allleve.Status ==='Approved'" style="color: green;">
+                    <mat-icon class="pt-1">done</mat-icon><span> Approved</span>  
+                  </div>
+                 <div  *ngIf="allleve.Status === 'Rejected'"  style="color: red;">
+                  <mat-icon  class="pt-1">clear</mat-icon><span> Rejected</span>
+                 </div>
+                </div>
+              </div>
+  </div>
+</ng-container>
+<ng-template #elseNoLeveRe >
+  
+  <h1 class="my-loader col-12 text-center " style="margin-top:280px;">No leave Reaquest available</h1>
+</ng-template>
+</div>
+
+
+<!-- <div class="card my-2 text-left col-11 col-sm-4 col-md-3 ml-3" *ngFor="let allleve of allLeaveDataArr" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">Leave for : {{allleve.LeaveStart | date:'mediumDate'}}  To  {{allleve.LeaveEnd | date:'mediumDate'}}
+      <br>
+      Number of Days : {{allleve.Days}}
+    </h5>
+    
+    <p class="card-text"><span class="font-weight-bold">Reason</span> : {{allleve.Reason}}
+     <br> <br>
+   
+     <span class="font-weight-bold">Status</span> : {{allleve.Status}}
+    </p>
+    <h4 class="card-title">Status : <span>{{allleve.Status}}</span> </h4> -->
+ 
+  <!-- </div>
+</div> -->
+<!-- {
+    "Department": "Account",
+    "LeaveEnd": "2024-03-20T18:30:00.000Z",
+    "LeaveStart": "2024-03-12T18:30:00.000Z",
+    "Reason": "aaaaaaaaaaaaaa",
+    "Status": "Pedding",
+    "UserFullName": "Sourabh Magadum"
+} -->
